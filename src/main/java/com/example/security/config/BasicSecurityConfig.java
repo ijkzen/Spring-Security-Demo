@@ -12,11 +12,12 @@ public class BasicSecurityConfig {
 
     @Bean
     SecurityFilterChain basicSecurityAuthentication(HttpSecurity httpSecurity) throws Exception {
-        return httpSecurity.httpBasic()
+        httpSecurity.httpBasic()
                 .and().authorizeHttpRequests()
                 .anyRequest()
-                .authenticated()
-                .and().build();
+                .authenticated();
+
+        return httpSecurity.build();
     }
 
     @Bean
