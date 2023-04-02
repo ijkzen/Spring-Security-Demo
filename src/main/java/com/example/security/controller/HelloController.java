@@ -12,11 +12,6 @@ public class HelloController {
     @GetMapping("/hello")
     String hello() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        Object principal = authentication.getPrincipal();
-        if (principal instanceof UserDetails) {
-            return "hello " + ((UserDetails) principal).getUsername() + "!";
-        } else {
-            return "something went wrong";
-        }
+        return "hello " + authentication.getName() + "!";
     }
 }
